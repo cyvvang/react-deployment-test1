@@ -1,0 +1,26 @@
+import React, { useState } from "react";
+
+const Buttons = ({ onClickHandler, value, title, selected }) => {
+  const [isSelected, setIsSelected] = useState(selected);
+  //console.log("Boutton value is : " + value);
+  const handleClick = (event) => {
+    setIsSelected(!isSelected);
+    onClickHandler(event.target.value);
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      value={value}
+      className="btns"
+      style={{
+        background: isSelected ? "#000" : "",
+        color: isSelected ? "#FFF" : "",
+      }}
+    >
+      {title}
+    </button>
+  );
+};
+
+export default Buttons;

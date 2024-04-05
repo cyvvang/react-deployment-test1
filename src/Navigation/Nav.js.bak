@@ -1,0 +1,67 @@
+import "./Nav.css";
+import React from "react";
+import Buttons from "../components/Buttons";
+
+function Nav({ handleClick, selectedFilters }) {
+  return (
+    <div className='top-nav'>
+      <h1>Recent K-Pop Favorites ⋆ೀ˚⟡˖</h1>
+      <div className="sort-row">
+        <p className="large-text">Sort by</p>
+        <Buttons
+          onClickHandler={handleClick}
+          value=""
+          title="Clear filters"
+          selected={selectedFilters.length === 0} // Clear filters button is selected when no filters are applied
+        />
+      </div>
+      
+      <div className="filter-container">
+        <div className="col">
+          <p className="filter-category">Year</p>
+          <p className="filter-category">Song type</p>
+        </div>  
+        
+        <div className="col">
+          <div className='btn-row'>
+            <Buttons
+              onClickHandler={handleClick}
+              value="2024"
+              title="2024"
+              selected={selectedFilters.includes("2024")}
+            />
+            <Buttons
+              onClickHandler={handleClick}
+              value="2023"
+              title="2023"
+              selected={selectedFilters.includes("2023")}
+            />
+            <Buttons
+              onClickHandler={handleClick}
+              value="2022"
+              title="2022"
+              selected={selectedFilters.includes("2022")}
+            />
+          </div>
+        
+          <div className='btn-row'>
+            <Buttons
+              onClickHandler={handleClick}
+              value="single"
+              title="Single"
+              selected={selectedFilters.includes("single")}
+            />
+            <Buttons
+              onClickHandler={handleClick}
+              value="ep"
+              title="EP"
+              selected={selectedFilters.includes("ep")}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Nav;

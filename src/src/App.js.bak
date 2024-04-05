@@ -1,0 +1,150 @@
+import './App.css';
+import Sidebar from "./Sidebar/Sidebar";
+import Navigation from "./Navigation/Nav";
+import Songs from "./Songs/Songs";
+import React, { useState } from "react";
+import Card from './components/Card';
+import songs from "./db/data";
+import Icons from './components/Icons';
+/* 
+function App() {
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const handleClick = (value) => {
+    if (value === "") {
+      console.log("1: value is :" + value);
+      setSelectedFilters([]);
+      resetButtonColors();
+    } else if (selectedFilters.includes(value)) {
+      console.log("2: value is :" + value);
+      setSelectedFilters(selectedFilters.filter(filter => filter !== value));
+    } else {
+      console.log("3: value is :" + value);
+      setSelectedFilters([...selectedFilters, value]);
+      //console.log("value is :" + JSON.stringify(value));
+    }
+    console.log("4: value is :" + value);
+    
+  }
+
+  const resetButtonColors = () => {
+    // Reset button colors for all buttons
+    const buttons = document.querySelectorAll('.btns');
+    buttons.forEach(button => {
+      button.style.background = "";
+      button.style.color = "";
+    });
+  };
+
+  function filteredData(songs, selected) {
+    let filteredSongs = songs;
+    console.log("The artist are included: " + selected.includes(filteredSongs.artist));
+    console.log("The year are included: " + selected.includes(filteredSongs.year))
+    console.log("selected: ", selected)
+    if (selected.length > 0) {
+      filteredSongs = filteredSongs.filter(({ year, songType, artist }) => 
+        selected.includes(year) || 
+        selected.includes(songType) ||
+        selected.includes(artist)
+      );
+    }
+    console.log("filtered songs are :" + filteredSongs)
+
+    return filteredSongs.map(
+      ({ release, heart, img, title, artist, songType, url }) => (
+        <Card 
+          release={release}
+          heart={heart}
+          img={img}
+          title={title}
+          artist={artist}
+          songType={songType}
+          url={url}
+          onClickFavorite={(isFavorite) => {
+            console.log("Favorited:", isFavorite);
+          }}
+        />
+      )
+    );
+  }
+
+  const result = filteredData(songs, selectedFilters);
+
+  return (
+    <div className="App">
+      <Sidebar handleClick={handleClick} />
+      <Navigation handleClick={handleClick} selectedFilters={selectedFilters} />
+      <Songs result={result} />
+    </div>
+  );
+}
+
+export default App; */
+function App() {
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const handleClick = (value) => {
+    //console.log("value is :" + value);
+/*     if (value === "") {
+      setSelectedFilters([]);
+    } else if (selectedFilters.includes(value)) {
+      setSelectedFilters(prevFilters => prevFilters.filter(filter => filter !== value));
+    } else {
+      setSelectedFilters(prevFilters => [...prevFilters, value]);
+    }
+  } */
+
+  //const handleClick = (value) => {
+    if (value === "") {
+      setSelectedFilters([]);
+    } else if (selectedFilters.includes(value)) {
+      setSelectedFilters(prevFilters => prevFilters.filter(filter => filter !== value));
+    } else {
+      setSelectedFilters(prevFilters => [...prevFilters, value]);
+    }
+  }
+  
+  function filteredData(songs, selected) {
+    console.log("Selected filters:", selected);
+    let filteredSongs = songs;
+    if (selected.length > 0) {
+      filteredSongs = filteredSongs.filter(({ year, songType, artist }) =>
+        selected.includes(year) ||
+        selected.includes(songType) ||
+        selected.includes(artist)
+      );
+    }
+    console.log("Filtered songs:", filteredSongs);
+    filteredSongs.sort((a, b) => a.release - b.release);
+    //console.log("filtered songs are :" + JSON.stringify(filteredSongs));
+    return filteredSongs.map(
+      ({ release, heart, img, title, artist, songType, url }) => (
+        <Card
+          key={url}
+          release={release}
+          heart={heart}
+          img={img}
+          title={title}
+          artist={artist}
+          songType={songType}
+          url={url}
+          onClickFavorite={(isFavorite) => {
+            console.log("Favorited:", isFavorite);
+          }}
+        />
+      )
+    );
+  }
+
+  const result = filteredData(songs, selectedFilters);
+
+  return (
+    <div className="App">
+      <Sidebar handleClick={handleClick} />
+      <Navigation handleClick={handleClick} selectedFilters={selectedFilters} />
+      <Songs result={result} />
+    </div>
+  );
+}
+
+export default App;

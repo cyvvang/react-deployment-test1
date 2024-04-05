@@ -1,0 +1,23 @@
+// const Icons = ({onClickHandler, value, img}) => {
+//   return (
+//     <div className="pfp-btn" onClick={onClickHandler} value={value}>
+//       <img src={img}/>
+//     </div>
+//   );
+// }
+
+// export default Icons;
+
+const Icons = ({ onClickHandler, value, img }) => {
+  const handleClick = () => {
+    onClickHandler(value); // Pass the value directly to the onClickHandler function
+  };
+
+  return (
+    <div className="pfp-btn" onClick={handleClick}>
+      <img src={img} alt={value} />
+    </div>
+  );
+}
+
+export default Icons;

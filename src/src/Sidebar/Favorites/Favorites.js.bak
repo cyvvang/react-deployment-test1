@@ -1,0 +1,11 @@
+import "./Favorites.css";
+
+const Favorites = ({onClickFavoritesFilter}) => {
+  return (
+    <div className="square-btn" onClick={onClickFavoritesFilter}>
+      <p className="large-text">❤️</p>
+    </div>
+  );
+}
+
+export default Favorites;

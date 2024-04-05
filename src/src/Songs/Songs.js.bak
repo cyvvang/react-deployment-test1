@@ -1,0 +1,28 @@
+//import "./Songs.css";
+
+/* function Songs({result}) {
+  console.log("Songs result is " + result);
+  return (
+    <section className="card-container">
+      {result}
+    </section>
+  );
+}
+
+export default Songs; */
+
+import "./Songs.css";
+
+function Songs({ result }) {
+  console.log("Songs result is ", result);
+
+  return (
+    <section className="card-container">
+       {result.map((card, index) => (
+        <div key={index} className="card">{card}</div>
+      ))}
+    </section>
+  );
+}
+
+export default Songs;

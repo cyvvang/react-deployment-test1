@@ -1,0 +1,56 @@
+import Icons from "../../components/Icons";
+import "./Artist.css";
+
+const Artist = ({handleChange}) => {
+  console.log("handle sidebar artist")
+  return (
+    <div className="artist-container">
+      <Icons onClickHandler={handleChange}
+        value="bibi"
+        img="./images/bibi.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="v"
+        img="./images/v.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="le sserafim"
+        img="./images/le-sserafim.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="gidle"
+        img="./images/gidle.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="taeyeon"
+        img="./images/taeyeon.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="wendy"
+        img="./images/wendy.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="newjeans"
+        img="./images/newjeans.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="twice"
+        img="./images/twice.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="iu"
+        img="./images/iu.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="ive"
+        img="./images/ive.png"
+      />
+      <Icons onClickHandler={handleChange}
+        value="nmixx"
+        img="./images/nmixx.png"
+      />
+    </div>
+  );
+}
+
+export default Artist;

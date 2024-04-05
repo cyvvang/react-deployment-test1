@@ -1,0 +1,40 @@
+import { LuHeart } from "react-icons/lu";
+import { useState } from 'react';
+
+function Card({release, img, title, artist, url, onClickFavorite}) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
+    onClickFavorite(newFavoriteStatus);
+  };
+
+  return (
+    <section className='card'>
+      <div className='row'>
+        <a href={url} target="_blank">
+          <p className='release'>
+            {release}
+          </p>
+        </a>  
+        <LuHeart
+          className="heart-icon"
+          onClick={toggleFavorite}
+          style={{fill: isFavorite ? "#f74a49" : "", color: isFavorite ? "#f74a49" : ""}}
+        />
+      </div>
+      <a href={url} target="_blank">
+        <div className='img-container'>
+          <img src={img} alt={title}/>
+        </div>
+        <div className="song-details">
+          <p className="title">{title}</p>
+          <p className='artist'>{artist}</p>
+        </div>
+      </a>
+    </section>
+  );
+}
+
+export default Card;
